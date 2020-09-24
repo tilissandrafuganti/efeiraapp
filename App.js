@@ -256,19 +256,19 @@ const styles = StyleSheet.create({
   },
   button:{
     borderRadius: 20,
-    color:"#18d070"
+    color:'#18d070'
   },
   button3:{
-  color:"#18d070"
+  color:'#18d070'
   },
   button4:{
     fontFamily: "Arial",
-    color:"#00000",
+    color:'#00000',
     fontSize:20
   },
  
   button2:{
-    color:"#00000",
+    color:'#00000',
     fontSize:25
   },
   TextComponentStyle: {
