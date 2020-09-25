@@ -176,14 +176,14 @@ const uri = `http://127.0.0.1/feira/login.php`
   }
 
   return (<View style = { styles.App }>
-      <View>
+      <View><Text style ={styles.cabecalho}>...</Text></View><View>
       <Image style = { styles.logo }
       source = { require('./assets/logoacima.png') }/></View>
-      <Tex>Email</Tex>
-      <TextInput   onChangeText = { txt => setUser(txt) }
+      <Text style = { styles.button4 } >Email</Text>
+      <TextInput  placeholder = "Digite seu email" onChangeText = { txt => setUser(txt) }
       underlineColorAndroid = 'transparent'
       style = { styles.TextInputStyleClass }/>
-      <Tex>Senha</Tex>
+      <Text style = { styles.button4 }>Senha</Text>
       <TextInput placeholder = "Digite sua senha" onChangeText = { text => setPass(text) }
       underlineColorAndroid = 'transparent'  style = { styles.TextInputStyleClass }
       secureTextEntry = { true } />
@@ -192,9 +192,9 @@ const uri = `http://127.0.0.1/feira/login.php`
           () => login()
       }
       >
-        <Text>Entrar</Text>
+        <Text style = { styles.button5 }>Entrar</Text>
         </TouchableOpacity>
-      <View style = { styles.espaco }></View><View><TEXT style={styles.button4}>CRIAR UMA CONTA </TEXT><TouchableOpacity style={styles.button2}
+      <View style = { styles.espaco }></View><View><Text style={styles.button4}>CRIAR UMA CONTA </Text><TouchableOpacity style={styles.button2}
       onPress = {
           () => props.navigation.navigate('CADASTRAR')
       }>
@@ -229,58 +229,88 @@ function App() {
 
 export default App;
 
-
+const width_proportion = '97%';
+const height_proportion = '65%';
 const styles = StyleSheet.create({
 
   App: {
 
-      justifyContent: 'center',
+   
       flex: 1,
       margin: 10,
-      backgroundColor: '#ffffff',
+      backgroundColor: '#f5f6f8',
       color: '#000000',
+      justifyContent: 'flex-start'
+    
+   
+  
   },
 
   TextInputStyleClass: {
 
-      textAlign: 'center',
-      marginBottom: 7,
-      height: 40,
-      borderWidth: 5,
-      // Set border Hex Color Code Here.
-      borderColor: '#cdcdc1',
-      backgroundColor: '#ffffff',
-      // Set border Radius.
-      borderRadius: 5,
+    textAlign: 'center',
+    margin: 5,
+    height: 40,
+    width: 300,
+    padding: 5,
+    backgroundColor: '#ffffff',
+    borderRadius: 5,
+    elevation: 2 ,
+    marginLeft:50,
+   
 
   },
   button:{
-    borderRadius: 20,
-    color:'#18d070'
+    borderRadius: 5,
+    textAlign: 'center',
+    marginBottom: 20,
+    backgroundColor: '#18d070',
+    color:'#ffffff',
+    padding: 5,
+    fontSize:20,
+    marginLeft:150,
+    height: 40,
+    width:80,
+    textAlign: 'center',
   },
   button3:{
-  color:'#18d070'
+  color:'#18d070',
+  alignSelf: 'flex-end'
   },
+  cabecalho:{
+    color:'#18d070',
+    width:width_proportion,
+    height:10
+    },
   button4:{
-    fontFamily: "Arial",
-    color:'#00000',
+    marginTop:10,
+    color:'#000000',
+    fontSize:20,
+    marginLeft:50,
+    
+  },
+  button5:{
+    
+    color:'#ffffff',
     fontSize:20
   },
- 
   button2:{
-    color:'#00000',
-    fontSize:25
+    color:'#000000',
+    fontSize:25,
+    alignSelf: 'flex-end'
   },
   TextComponentStyle: {
-      fontSize: 20,
+      fontSize: 30,
       color: "#000",
       textAlign: 'center',
       marginBottom: 15
   },
   logo: {
-      width: 370,
-      height: 300,
-      justifyContent: 'center',
+    marginTop:0,
+      width: width_proportion,
+      height:height_proportion,
+      justifyContent: 'flex-start',
+      
   },
   espaco: {
       height: 10
