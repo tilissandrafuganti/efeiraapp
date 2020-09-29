@@ -11,7 +11,7 @@ function Perfil({ route, navigation }) {
   const { usuario } = route.params;
   console.log(usuario);
   const [user, setUser] = useState({name:'', ano:'', link:'', email:''})
-  var uri = 'http://desafio.marcioleiteweb.com.br/perfil.php?id='+ usuario;
+  var uri = `http://desafio.marcioleiteweb.com.br/perfil.php?id=`+ usuario;
     useEffect(() => { 
         axios.get(uri)
              .then(response => { 
