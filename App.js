@@ -10,8 +10,8 @@ function Perfil({ route, navigation }) {
   /* 2. Get the param */
   const { usuario } = route.params;
   console.log(usuario);
-  const [user, setUser] = useState({nome_assemblex:'', rg: ''})
-  var uri = 'http://127.0.0.1/feira/perfil.php?cpf='+ usuario;
+  const [user, setUser] = useState({name:'', ano:'', link:'', email:''})
+  var uri = 'http://desafio.marcioleiteweb.com.br/perfil.php?id='+ usuario;
     useEffect(() => { 
         axios.get(uri)
              .then(response => { 
@@ -19,16 +19,25 @@ function Perfil({ route, navigation }) {
                  
              }); 
         }, []);
-        return(<View style={styles.App}><Text style={styles.texto}>nome:{user.nome} - rg:{user.rg}</Text></View>);
+        var link1 = user.link;
+        return(<View style={styles.App}>
+          <View><Text style ={styles.cabecalho}>...</Text></View>
+          <View>
+          <Image style = { styles.logo }
+          source = { require('./assets/logominhaconta.png') }/></View>
+          <View><Image style = { styles.logo }
+          source = {`http://desafio.marcioleiteweb.com.br/feirante/`+link1} /></View>
+          <View><Text style={styles.button4}>nome:{user.name} Desde:{user.ano}</Text></View>
+          <View><Text style={styles.button4}>Contatos:</Text></View><View><Text style={styles.button4}>email:{user.email}</Text></View></View>);
 }
+
 function Cadastrar({ props, navigation }) {
-  const uri2 = `http://127.0.0.1/feira/cadastrar.php`
+  const uri2 = `http://desafio.marcioleiteweb.com.br/cadastrar.php`
       // Creating Login Activity.
 
 
 
-  const [rg, setRg] = useState('')
-  const [cpf, setCpf] = useState('')
+  const [senha, setSenha] = useState('')
   const [nome, setNome] = useState('')
   const [email, setEmail] = useState('')
 
@@ -40,7 +49,7 @@ function Cadastrar({ props, navigation }) {
                   'Accept': 'application/json',
                   'Content-Type': 'application/json',
               },
-              body: JSON.stringify({ rg, cpf, nome, email })
+              body: JSON.stringify({ nome,senha,email })
           })
           const json = await resp.json()
           Alert.alert({ usuario: json });
@@ -52,16 +61,13 @@ function Cadastrar({ props, navigation }) {
 
   return ( <View style = { styles.App } >
 
-      <TextInput placeholder = "Digite seu CPF"
-      onChangeText = { txt => setCpf(txt) }
-      underlineColorAndroid = 'transparent'
-      style = { styles.TextInputStyleClass }/>
+     
       <TextInput placeholder = "Digite o seu nome"
       onChangeText = { text => setNome(text) }
       underlineColorAndroid = 'transparent'
       style = { styles.TextInputStyleClass }/>
-      <TextInput placeholder = "Digite o seu RG"
-      onChangeText = { text => setRg(text) }
+      <TextInput placeholder = "Digite sua senha"
+      onChangeText = { text => setSenha(text) }
       underlineColorAndroid = 'transparent'
       style = { styles.TextInputStyleClass }/>
        <TextInput placeholder = "Digite o seu email"
@@ -72,7 +78,7 @@ function Cadastrar({ props, navigation }) {
       onPress = {
           () => cadastrar()
       }
-      color = "#FFCC33" />
+      color = "#18d070" />
 
       </View>
 
@@ -95,7 +101,7 @@ function Menu({ route, navigation }) {
   const { usuario } = route.params;
 
   return ( <View style = { styles.App } >
-      <Text style = { styles.texto2 } > CPF: { JSON.stringify(usuario) }</Text><View><Button title = "PERFIL DE USUÁRIO"
+      <Text style = { styles.texto2 } > id: { JSON.stringify(usuario) }</Text><View><Button title = "PERFIL DE USUÁRIO"
       onPress = {
           () => navigation.navigate('PERFIL', { usuario })
       }
@@ -151,7 +157,7 @@ function Menu({ route, navigation }) {
 
 function Login(props) {
 
-const uri = `http://127.0.0.1/feira/login.php`
+const uri = `http://desafio.marcioleiteweb.com.br/login.php`
   const [usuario, setUser] = useState('')
   const [senha, setPass] = useState('')
 
@@ -175,7 +181,7 @@ const uri = `http://127.0.0.1/feira/login.php`
       }
   }
 
-  return (<View style = { styles.App }>
+  return (<View style = { styles.App }><ScrollView>
       <View><Text style ={styles.cabecalho}>...</Text></View><View>
       <Image style = { styles.logo }
       source = { require('./assets/logoacima.png') }/></View>
@@ -201,7 +207,7 @@ const uri = `http://127.0.0.1/feira/login.php`
       <Text style={styles.button3}>AGORA</Text>
         </TouchableOpacity>
        
-      </View></View>
+      </View></ScrollView></View>
 
   );
 }
@@ -237,7 +243,7 @@ const styles = StyleSheet.create({
 
    
       flex: 1,
-      margin: 10,
+      
       backgroundColor: '#f5f6f8',
       color: '#000000',
       justifyContent: 'flex-start'
@@ -283,7 +289,7 @@ const styles = StyleSheet.create({
     height:10
     },
   button4:{
-    marginTop:10,
+    marginTop:0,
     color:'#000000',
     fontSize:20,
     marginLeft:50,
