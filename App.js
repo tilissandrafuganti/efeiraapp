@@ -52,10 +52,12 @@ function Cadastrar({ props, navigation }) {
               body: JSON.stringify({ nome,senha,email })
           })
           const json = await resp.json()
-          Alert.alert({ usuario: json });
+          const mensagem = "FOi cadastrado!!";
+          Alert.alert(mensagem);
           //props.navigation.navigate('CadastrarRGeFoto', { usuario: json });
       } catch (e) {
-          Alert.alert({ usuario: json });
+        const  mensagem = "Não foi cadastrado!!";
+          Alert.alert(mensagem);
       }
   }
 
@@ -181,10 +183,16 @@ const uri = `http://desafio.marcioleiteweb.com.br/login.php`
       }
   }
 
-  return (<View style = { styles.App }><ScrollView>
-      <View><Text style ={styles.cabecalho}>...</Text></View><View>
+  return (<View style = { styles.App }>
+      <View>
       <Image style = { styles.logo }
       source = { require('./assets/logoacima.png') }/></View>
+      <View><Text style = { styles.button4 }>CRIAR UMA CONTA </Text></View><View><Button title = "AGORA"
+        onPress = {
+            () => props.navigation.navigate('CADASTRAR')
+        }
+        color = "#18D070" />
+        </View>
       <Text style = { styles.button4 } >Email</Text>
       <TextInput  placeholder = "Digite seu email" onChangeText = { txt => setUser(txt) }
       underlineColorAndroid = 'transparent'
@@ -200,14 +208,8 @@ const uri = `http://desafio.marcioleiteweb.com.br/login.php`
       >
         <Text style = { styles.button5 }>Entrar</Text>
         </TouchableOpacity>
-      <View style = { styles.espaco }></View><View><Text style={styles.button4}>CRIAR UMA CONTA </Text><TouchableOpacity style={styles.button2}
-      onPress = {
-          () => props.navigation.navigate('CADASTRAR')
-      }>
-      <Text style={styles.button3}>AGORA</Text>
-        </TouchableOpacity>
-       
-      </View></ScrollView></View>
+        
+      </View>
 
   );
 }
@@ -236,17 +238,17 @@ function App() {
 export default App;
 
 const width_proportion = '97%';
-const height_proportion = '65%';
+const height_proportion = '55%';
 const styles = StyleSheet.create({
 
   App: {
 
    
-      flex: 1,
+      flex:1,
       
       backgroundColor: '#f5f6f8',
       color: '#000000',
-      justifyContent: 'flex-start'
+      justifyContent: 'center'
     
    
   
@@ -283,11 +285,7 @@ const styles = StyleSheet.create({
   color:'#18d070',
   alignSelf: 'flex-end'
   },
-  cabecalho:{
-    color:'#18d070',
-    width:width_proportion,
-    height:10
-    },
+
   button4:{
     marginTop:0,
     color:'#000000',
@@ -315,12 +313,10 @@ const styles = StyleSheet.create({
     marginTop:0,
       width: width_proportion,
       height:height_proportion,
-      justifyContent: 'flex-start',
+      justifyContent: 'center',
       
   },
-  espaco: {
-      height: 10
-  },
+ 
   texto: {
       color: '#ffffff',
       textAlign: 'center',
