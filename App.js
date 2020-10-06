@@ -11,7 +11,7 @@ function Perfil({ route, navigation }) {
   const { usuario } = route.params;
   console.log(usuario);
   const [user, setUser] = useState({name:'', ano:'', link:'', email:''})
-  var uri = `http://desafio.marcioleiteweb.com.br/perfil.php?id=`+ usuario;
+  var uri = `http://apperomaneio.lojakdecor.com.br/perfil.php?id=`+ usuario;
     useEffect(() => { 
         axios.get(uri)
              .then(response => { 
@@ -26,13 +26,13 @@ function Perfil({ route, navigation }) {
           <Image style = { styles.logo }
           source = { require('./assets/logominhaconta.png') }/></View>
           <View><Image style = { styles.logo }
-          source = {`http://desafio.marcioleiteweb.com.br/feirante/`+link1} /></View>
+          source = {`http://apperomaneio.lojakdecor.com.br/feirante/`+link1} /></View>
           <View><Text style={styles.button4}>nome:{user.name} Desde:{user.ano}</Text></View>
           <View><Text style={styles.button4}>Contatos:</Text></View><View><Text style={styles.button4}>email:{user.email}</Text></View></View>);
 }
 
 function Cadastrar({ props, navigation }) {
-  const uri2 = `http://desafio.marcioleiteweb.com.br/cadastrar.php`
+  const uri2 = `http://apperomaneio.lojakdecor.com.br/cadastrar.php`
       // Creating Login Activity.
 
 
@@ -95,7 +95,7 @@ function Entrada({ route, navigation }) {
   }
 
   return ( <View style = { styles.App } >
-      <Text style = { styles.texto } > Seu usuário ou senha está errada!!</Text></View >
+      <Text style = { styles.button4} > Seu usuário ou senha está errada!!</Text></View >
   );
 }
 function Menu({ route, navigation }) {
@@ -103,7 +103,7 @@ function Menu({ route, navigation }) {
   const { usuario } = route.params;
 
   return ( <View style = { styles.App } >
-      <Text style = { styles.texto2 } > id: { JSON.stringify(usuario) }</Text><View><Button title = "PERFIL DE USUÁRIO"
+      <Text style = { styles.button4} > id: { JSON.stringify(usuario) }</Text><View><Button title = "PERFIL DE USUÁRIO"
       onPress = {
           () => navigation.navigate('PERFIL', { usuario })
       }
@@ -159,7 +159,7 @@ function Menu({ route, navigation }) {
 
 function Login(props) {
 
-const uri = `http://desafio.marcioleiteweb.com.br/login.php`
+const uri = `http://apperomaneio.lojakdecor.com.br/login.php`
   const [usuario, setUser] = useState('')
   const [senha, setPass] = useState('')
 
@@ -187,12 +187,7 @@ const uri = `http://desafio.marcioleiteweb.com.br/login.php`
       <View>
       <Image style = { styles.logo }
       source = { require('./assets/logoacima.png') }/></View>
-      <View><Text style = { styles.button4 }>CRIAR UMA CONTA </Text></View><View><Button title = "AGORA"
-        onPress = {
-            () => props.navigation.navigate('CADASTRAR')
-        }
-        color = "#18D070" />
-        </View>
+      
       <Text style = { styles.button4 } >Email</Text>
       <TextInput  placeholder = "Digite seu email" onChangeText = { txt => setUser(txt) }
       underlineColorAndroid = 'transparent'
@@ -206,10 +201,17 @@ const uri = `http://desafio.marcioleiteweb.com.br/login.php`
           () => login()
       }
       >
-        <Text style = { styles.button5 }>Entrar</Text>
+        <Text style = { styles.button5 }>ENTRAR</Text>
         </TouchableOpacity>
-        
+        <View><Text style = { styles.button4 }>CRIAR UMA CONTA </Text></View><View style={{flex: 1, flexDirection: 'row'}}><View style={{width: 200, height: 50}} ></View><View><TouchableOpacity style={{width: 100, height: 50}}
+        onPress = {
+            () => props.navigation.navigate('CADASTRAR')
+        }>
+        <Text  style = { styles.button7 }>AGORA</Text>
+        </TouchableOpacity></View>
+        </View>
       </View>
+     
 
   );
 }
@@ -237,8 +239,8 @@ function App() {
 
 export default App;
 
-const width_proportion = '97%';
-const height_proportion = '55%';
+const width_proportion = 400;
+const height_proportion = 250;
 const styles = StyleSheet.create({
 
   App: {
@@ -248,7 +250,7 @@ const styles = StyleSheet.create({
       
       backgroundColor: '#f5f6f8',
       color: '#000000',
-      justifyContent: 'center'
+      
     
    
   
@@ -269,16 +271,15 @@ const styles = StyleSheet.create({
 
   },
   button:{
-    borderRadius: 5,
-    textAlign: 'center',
-    marginBottom: 20,
+    borderRadius: 30,
+    marginTop:10,
     backgroundColor: '#18d070',
     color:'#ffffff',
     padding: 5,
     fontSize:20,
-    marginLeft:150,
+    marginLeft:100,
     height: 40,
-    width:80,
+    width:200,
     textAlign: 'center',
   },
   button3:{
@@ -287,16 +288,29 @@ const styles = StyleSheet.create({
   },
 
   button4:{
-    marginTop:0,
+    marginTop:20,
     color:'#000000',
-    fontSize:20,
+    fontSize:15,
     marginLeft:50,
     
   },
   button5:{
     
     color:'#ffffff',
-    fontSize:20
+    fontSize:20,
+    textAlign: 'center',
+  },
+  button6:{
+    
+    color:'#18d070',
+    fontSize:20,
+    
+  },
+  button7:{
+     
+    backgroundColor: '#ffffff',
+    color:'#18d070',
+    fontSize:20,
   },
   button2:{
     color:'#000000',
@@ -313,7 +327,7 @@ const styles = StyleSheet.create({
     marginTop:0,
       width: width_proportion,
       height:height_proportion,
-      justifyContent: 'center',
+      
       
   },
  

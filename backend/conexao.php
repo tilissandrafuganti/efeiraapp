@@ -1,15 +1,15 @@
 <?php
  
 //Define your host here.
-$HostName = "localhost";
+$HostName = "br822.hostgator.com.br";
  
 //Define your database name here.
-$DatabaseName = "efeira";
+$DatabaseName = "vouga072_app";
  
 //Define your database username here.
-$HostUser = "root";
+$HostUser = "vouga072_app";
  
 //Define your database password here.
-$HostPass = "";
+$HostPass = "8a<n5yi<8dO";
  
 ?>
