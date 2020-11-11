@@ -24,7 +24,7 @@
     $senha =  $obj['senha'];
 	 
 	 // Creating SQL query and insert the record into MySQL database table.
-	$Sql_Query = "insert into users (name,password,email) values ('$nome','$senha','$email')";
+	$Sql_Query = "insert into users (name , password , email) values ('$nome','$senha','$email')";
 	 
  
 	 if(mysqli_query($con,$Sql_Query)){

@@ -14,10 +14,10 @@ include 'conexao.php';
  
 // Populate User email from JSON $obj array and store into $email.
 
-if($usuario = $obj['usuario']!=''){
-    $usuario = $obj['usuario'];
+if($email = $obj['email']!=''){
+    $email = $obj['email'];
 } else{
-    $usuario = "111111111";
+    $email = "111111111";
 }
 // Populate Password from JSON $obj array and store into $password.
 if($senha = $obj['senha']!=''){
@@ -26,7 +26,7 @@ if($senha = $obj['senha']!=''){
     $senha = "111111111";
 }
 //Applying User Login query with email and password match.
-$Sql_Query = "select * from users where email = '$usuario' and password = '$senha' ";
+$Sql_Query = "select * from users where email = '$email' and password = '$senha' ";
 
 // Executing SQL Query.
 $check = mysqli_fetch_array(mysqli_query($con,$Sql_Query));
